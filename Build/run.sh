@@ -7,4 +7,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Libraries"
 
 chmod +x Binaries/Taktix
 
-exec Binaries/Taktix
+./Binaries/Taktix
