@@ -73,6 +73,14 @@ INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries" )
 
 INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries/spdlog/include" )
 
+# Configuring TGUI
+
+INCLUDE_DIRECTORIES( ${TGUI_INCLUDE_DIR} )
+
+# Configuring SFML
+
+INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
+
 # Configuring Doxygen
 # Add Documentation target
 

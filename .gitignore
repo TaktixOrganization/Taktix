@@ -2,4 +2,5 @@
 Artifacts/*
 Build/*
 !Build/run.sh
+!Build/run.bat
 .DS_Store
