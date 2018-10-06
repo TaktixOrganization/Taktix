@@ -53,6 +53,8 @@ if(NOT SFML_FOUND)
     message(FATAL_ERROR "Could not find SFML")
 endif()
 
+INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
+
 # Configuring TGUI
 
 FIND_PACKAGE( TGUI 0.7 REQUIRED )
@@ -60,6 +62,8 @@ FIND_PACKAGE( TGUI 0.7 REQUIRED )
 if(NOT TGUI_FOUND)
     message(FATAL_ERROR "Could not find TGUI")
 endif()
+
+INCLUDE_DIRECTORIES( ${TGUI_INCLUDE_DIR} )
 
 # Configuring Catch2
 
@@ -72,14 +76,6 @@ INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries" )
 # Configuring spdlog
 
 INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries/spdlog/include" )
-
-# Configuring TGUI
-
-INCLUDE_DIRECTORIES( ${TGUI_INCLUDE_DIR} )
-
-# Configuring SFML
-
-INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
 
 # Configuring Doxygen
 # Add Documentation target
