@@ -2,4 +2,4 @@
 
 DOXYFILE = Documentation/Doxyfile.in
 
-# PROJECT_LOGO = Documentation/logo.png
+PROJECT_LOGO = Assets/Textures/logo.png
