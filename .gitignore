@@ -1,5 +1,6 @@
 .idea/*
 Artifacts/*
+Database/*
 Build/*
 !Build/run.sh
 .DS_Store
