@@ -47,7 +47,7 @@ FILE(
 
 # Configuring SFML
 
-FIND_PACKAGE( SFML 2 REQUIRED system window graphics network audio )
+FIND_PACKAGE( SFML 2.5.1 REQUIRED system window graphics network audio )
 
 if(NOT SFML_FOUND)
     message(FATAL_ERROR "Could not find SFML")
@@ -57,7 +57,7 @@ INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
 
 # Configuring TGUI
 
-FIND_PACKAGE( TGUI 0.7 REQUIRED )
+FIND_PACKAGE( TGUI 0.8.1 REQUIRED )
 
 if(NOT TGUI_FOUND)
     message(FATAL_ERROR "Could not find TGUI")

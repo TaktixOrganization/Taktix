@@ -37,14 +37,16 @@ matrix:
 install:
     - ls
     - cd Libraries # Taktix/Libraries
-    - cd SFML && mkdir build && cd build # Taktix/Libraries/SFML/build
+    - cd SFML
+    - git checkout 2.5.x
+    - mkdir build && cd build # Taktix/Libraries/SFML/build
     - cmake .. -DCMAKE_BUILD_TYPE=Release
     - make -j2
     - sudo make install
     - cd ../.. # Taktix/Libraries
     - ls
     - cd TGUI # Taktix/Libraries/TGUI
-    - git checkout 0.7
+    - git checkout 0.8
     - mkdir build && cd build # Taktix/Libraries/TGUI/build
     - cmake .. -DCMAKE_BUILD_TYPE=Release
     - make -j2

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <TGUI/TGUI.hpp>
 
 void login(tgui::EditBox::Ptr username, tgui::EditBox::Ptr password)

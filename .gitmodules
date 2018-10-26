@@ -6,10 +6,10 @@
 	url = https://github.com/TaktixOrganization/spdlog.git
 [submodule "Libraries/TGUI"]
 	path = Libraries/TGUI
-	url = https://github.com/TaktixOrganization/TGUI.git
+	url = https://github.com/texus/TGUI.git
 [submodule "Libraries/ECS"]
 	path = Libraries/ECS
 	url = https://github.com/TaktixOrganization/ECS.git
 [submodule "Libraries/SFML"]
 	path = Libraries/SFML
-	url = https://github.com/TaktixOrganization/SFML.git
+	url = https://github.com/SFML/SFML.git

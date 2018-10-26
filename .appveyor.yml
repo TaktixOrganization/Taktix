@@ -44,6 +44,7 @@ before_build:
     - cmd: echo %CMAKE_GENERATOR_NAME%
     - cmd: cd C:\projects\Taktix\Libraries # Taktix/Libraries
     - cmd: cd SFML # Taktix/Libraries/SFML
+    - cmd: git checkout 2.5.x
     - cmd: md build
     - cmd: cd build # Taktix/Libraries/SFML/build
     - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release ..
@@ -52,7 +53,7 @@ before_build:
     - cmd: cd ../.. # Taktix/Libraries
     - cmd: dir .
     - cmd: cd TGUI # Taktix/Libraries/TGUI
-    - cmd: git checkout 0.7
+    - cmd: git checkout 0.8
     - cmd: md build
     - cmd: cd build # Taktix/Libraries/TGUI/build
     - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" ..
