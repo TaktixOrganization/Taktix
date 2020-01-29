@@ -1,0 +1,9 @@
+[submodule "Submodules/SFML"]
+	path = Submodules/SFML
+	url = git@github.com:TaktixOrganization/SFML.git
+[submodule "Submodules/TGUI"]
+	path = Submodules/TGUI
+	url = git@github.com:TaktixOrganization/TGUI.git
+[submodule "Submodules/Catch2"]
+	path = Submodules/Catch2
+	url = git@github.com:TaktixOrganization/Catch2.git
