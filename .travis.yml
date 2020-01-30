@@ -46,4 +46,4 @@ script:
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
     - chmod +x Binaries/Taktix_Tests
     - ./Binaries/Taktix_Tests
-    - curl -T Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
+    - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
