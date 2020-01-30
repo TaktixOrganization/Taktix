@@ -1,7 +1,7 @@
 ### INFORMATIONS ###
 
 # Repository : https://github.com/TaktixOrganization/Taktix
-# Builds : https://ci.appveyor.com/project/Jeckhys/taktix
+# Builds     : https://ci.appveyor.com/project/Jeckhys/taktix
 
 platform:
     - Win32
@@ -13,12 +13,12 @@ image:
 
 environment:
     MSVC_DEFAULT_OPTIONS: ON
-    FTP_HOSTNAME:
-        secure: sTkSBGczuUNckkpyX11LkqgK3PD14ighQKU36dGB0+o=
     FTP_USERNAME:
         secure: FPwvaEn6ZmAxTWJBoOEhJw==
     FTP_PASSWORD:
         secure: j5hnloFsUso4YdC1OoMJDg==
+    FTP_HOSTNAME:
+        secure: sTkSBGczuUNckkpyX11LkqgK3PD14ighQKU36dGB0+o=
 
 init:
     - cmd: cmake --version
@@ -42,20 +42,20 @@ before_build:
     - cmd: echo %platform%
     - cmd: echo %CMAKE_IMAGE_NAME%
     - cmd: echo %CMAKE_GENERATOR_NAME%
-    - cmd: cd C:\projects\Taktix\Libraries # Taktix/Libraries
-    - cmd: cd SFML # Taktix/Libraries/SFML
+    - cmd: cd C:\projects\Taktix\Submodules # Taktix/Submodules
+    - cmd: cd SFML # Taktix/Submodules/SFML
     - cmd: git checkout 2.5.x
     - cmd: md build
-    - cmd: cd build # Taktix/Libraries/SFML/build
+    - cmd: cd build # Taktix/Submodules/SFML/build
     - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release ..
     - cmd: cmake --build . --config "Release"
     - cmd: cmake --build . --target INSTALL --config "Release"
-    - cmd: cd ../.. # Taktix/Libraries
+    - cmd: cd ../.. # Taktix/Submodules
     - cmd: dir .
-    - cmd: cd TGUI # Taktix/Libraries/TGUI
+    - cmd: cd TGUI # Taktix/Submodules/TGUI
     - cmd: git checkout 0.8
     - cmd: md build
-    - cmd: cd build # Taktix/Libraries/TGUI/build
+    - cmd: cd build # Taktix/Submodules/TGUI/build
     - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" ..
     - cmd: cmake --build . --config "Release"
     - cmd: cmake --build . --target INSTALL --config "Release"
@@ -63,8 +63,8 @@ before_build:
     - cmd: cd Build # Taktix/Build
     - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" -DTGUI_ROOT="C:/%PROGRAM_FILES%/TGUI/" ..
     - cmd: cmake --build . --config "Release"
-    - cmd: xcopy ..\Libraries\SFML\build\lib\Release\*.dll Application\. /s /e /y
-    - cmd: xcopy ..\Libraries\TGUI\build\lib\Release\*.dll Application\. /s /e /y
+    - cmd: xcopy ..\Submodules\SFML\build\lib\Release\*.dll Application\. /s /e /y
+    - cmd: xcopy ..\Submodules\TGUI\build\lib\Release\*.dll Application\. /s /e /y
     - cmd: dir Application\
     - cmd: rd Application\CMakeFiles\ /s /q
     - cmd: del Application\cmake_install.cmake
@@ -103,5 +103,5 @@ deploy:
         secure: FPwvaEn6ZmAxTWJBoOEhJw==
     password:
         secure: j5hnloFsUso4YdC1OoMJDg==
-    folder: /www/latest/windows/
+    folder: /Taktix_Releases/latest/windows/
     artifact: Taktix-%VS_DATE%-%platform%
