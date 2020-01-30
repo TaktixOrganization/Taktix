@@ -8,7 +8,7 @@ mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j
-sudo make install
+make install
 
 cd ../../..
 
@@ -20,7 +20,7 @@ mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j
-sudo make install
+make install
 
 cd ../../..
 
