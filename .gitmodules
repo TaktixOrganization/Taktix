@@ -1,12 +1,12 @@
 [submodule "Submodules/SFML"]
 	path = Submodules/SFML
-	url = git@github.com:TaktixOrganization/SFML.git
+	url = git@github.com:SFML/SFML.git
     ignore = untracked
 [submodule "Submodules/TGUI"]
 	path = Submodules/TGUI
-	url = git@github.com:TaktixOrganization/TGUI.git
+	url = git@github.com:texus/TGUI.git
     ignore = untracked
 [submodule "Submodules/Catch2"]
 	path = Submodules/Catch2
-	url = git@github.com:TaktixOrganization/Catch2.git
+	url = git@github.com:catchorg/Catch2.git
     ignore = untracked
