@@ -7,7 +7,7 @@ git checkout 2.5.x
 mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j
+make -j2
 make install
 
 cd ../../..
@@ -19,7 +19,7 @@ git checkout 0.8
 mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j
+make -j2
 make install
 
 cd ../../..
