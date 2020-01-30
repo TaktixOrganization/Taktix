@@ -2,5 +2,5 @@
 Artifacts/*
 Database/*
 Build/*
-!Build/run.sh
+!Build/*.sh
 .DS_Store
