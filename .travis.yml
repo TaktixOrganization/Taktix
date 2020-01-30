@@ -38,16 +38,12 @@ install:
     - cp Build/build_linux.sh .
     - chmod +x build_linux.sh
     - sudo sh build_linux.sh
+    - cd Build
     - zip -r Taktix:${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
 
 script:
-    - ls
-    - cd Tests/
-    - ls
+    - cd Tests
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
-    - ls Binaries
-    - ls Submodules
-    - ls ..
     - chmod +x Binaries/Taktix_Tests
     - ./Binaries/Taktix_Tests
     - curl -T Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/

@@ -24,6 +24,7 @@ variables:
         - cp Build/build_linux.sh .
         - chmod +x build_linux.sh
         - sh build_linux.sh
+        - cd Build
         - zip -r Taktix-${CI_JOB_NAME}.zip Taktix
         - mv *.zip `basename *.zip | sed 's/-build//g'`
         - zip -r Taktix_Tests-${CI_JOB_NAME}.zip Tests
@@ -38,7 +39,7 @@ variables:
     script:
         - cd Build
         - unzip Taktix_Tests*.zip
-        - cd Tests/
+        - cd Tests
         - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
         - chmod +x Binaries/Taktix_Tests
         - ./Binaries/Taktix_Tests
