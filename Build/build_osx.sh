@@ -19,7 +19,7 @@ git checkout 0.8
 mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j
+make -j tgui
 sudo make install
 
 cd ../../..
@@ -54,9 +54,9 @@ rm *.cmake
 rm -rf CMakeFiles
 rm CMake*
 
-rm Application/Makefile
-rm Application/*.cmake
-rm -rf Application/CMakeFiles
+rm Taktix/Makefile
+rm Taktix/*.cmake
+rm -rf Taktix/CMakeFiles
 
 rm Tests/Makefile
 rm Tests/*.cmake
