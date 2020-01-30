@@ -30,51 +30,7 @@ install:
     - cmd: git submodule update --init --recursive
 
 before_build:
-    - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" set CMAKE_IMAGE_NAME=Visual Studio 14 2015
-    - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" set CMAKE_IMAGE_NAME=Visual Studio 15 2017
-    - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" set VS_DATE=vs2015
-    - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" set VS_DATE=vs2017
-    - cmd: if "%platform%"=="Win32" set CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
-    - cmd: if "%platform%"=="x64"   set CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
-    - cmd: if "%platform%"=="Win32" set PROGRAM_FILES=Program Files (x86)
-    - cmd: if "%platform%"=="x64" set PROGRAM_FILES=Program Files
-    - cmd: echo %image%
-    - cmd: echo %platform%
-    - cmd: echo %CMAKE_IMAGE_NAME%
-    - cmd: echo %CMAKE_GENERATOR_NAME%
-    - cmd: cd C:\projects\Taktix\Submodules # Taktix/Submodules
-    - cmd: cd SFML # Taktix/Submodules/SFML
-    - cmd: git checkout 2.5.x
-    - cmd: md build
-    - cmd: cd build # Taktix/Submodules/SFML/build
-    - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release ..
-    - cmd: cmake --build . --config "Release"
-    - cmd: cmake --build . --target INSTALL --config "Release"
-    - cmd: cd ../.. # Taktix/Submodules
-    - cmd: dir .
-    - cmd: cd TGUI # Taktix/Submodules/TGUI
-    - cmd: git checkout 0.8
-    - cmd: md build
-    - cmd: cd build # Taktix/Submodules/TGUI/build
-    - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" ..
-    - cmd: cmake --build . --config "Release"
-    - cmd: cmake --build . --target INSTALL --config "Release"
-    - cmd: cd ../../.. # Taktix
-    - cmd: cd Build # Taktix/Build
-    - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" -DTGUI_ROOT="C:/%PROGRAM_FILES%/TGUI/" ..
-    - cmd: cmake --build . --config "Release"
-    - cmd: xcopy ..\Submodules\SFML\build\lib\Release\*.dll Application\. /s /e /y
-    - cmd: xcopy ..\Submodules\TGUI\build\lib\Release\*.dll Application\. /s /e /y
-    - cmd: dir Application\
-    - cmd: rd Application\CMakeFiles\ /s /q
-    - cmd: del Application\cmake_install.cmake
-    - cmd: del Application\Taktix.vcxproj
-    - cmd: del Application\Taktix.vcxproj.filters
-    - cmd: xcopy Application\Release\Taktix.exe Application\. /y
-    - cmd: rd Application\Release\ /s /q
-    - cmd: rd Application\Taktix.dir\ /s /q
-    - cmd: ren Application Taktix
-    - cmd: move C:\projects\Taktix\Build\Taktix C:\projects\Taktix\.
+    - cmd: .ci\ci_windows.bat
 
 build:
     project: C:\projects\Taktix\Build\ALL_BUILD.vcxproj
