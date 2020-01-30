@@ -39,6 +39,7 @@ cp ../Submodules/SFML/Build/lib/* Application/Submodules/.
 cp ../Submodules/TGUI/Build/lib/* Application/Submodules/.
 chmod u+x run.sh
 cp run.sh Application/.
+mv Application Taktix
 
 mkdir -p Tests/Binaries/
 mv Tests/Taktix_Tests Tests/Binaries/.

@@ -24,7 +24,7 @@ variables:
         - cp Build/build_linux.sh .
         - chmod +x build_linux.sh
         - sh build_linux.sh
-        - zip -r Taktix-${CI_JOB_NAME}.zip Application
+        - zip -r Taktix-${CI_JOB_NAME}.zip Taktix
         - mv *.zip `basename *.zip | sed 's/-build//g'`
         - zip -r Taktix_Tests-${CI_JOB_NAME}.zip Tests
     artifacts:
