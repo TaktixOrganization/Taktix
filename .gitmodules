@@ -1,0 +1,12 @@
+[submodule "Submodules/SFML"]
+	path = Submodules/SFML
+	url = https://github.com/TaktixOrganization/SFML.git
+    ignore = untracked
+[submodule "Submodules/TGUI"]
+	path = Submodules/TGUI
+	url = https://github.com/TaktixOrganization/TGUI.git
+    ignore = untracked
+[submodule "Submodules/Catch2"]
+	path = Submodules/Catch2
+	url = https://github.com/TaktixOrganization/Catch2.git
+    ignore = untracked
