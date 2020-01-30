@@ -35,9 +35,9 @@ matrix:
           osx_image: xcode7.3
 
 install:
-    - cp Build/build_linux.sh .
-    - chmod +x build_linux.sh
-    - sudo sh build_linux.sh
+    - cp .ci/ci_osx.sh .
+    - chmod +x ci_osx.sh
+    - sudo sh ci_osx.sh
     - cd Build
     - zip -r Taktix:${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
 
