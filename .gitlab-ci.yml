@@ -25,7 +25,7 @@ variables:
         - chmod +x ci_linux.sh
         - sh ci_linux.sh
         - cd Build
-        - zip -r Taktix_${CI_JOB_NAME}.zip Taktix
+        - zip -r Taktix-${CI_JOB_NAME}.zip Taktix
         - zip -r Taktix_Tests-${CI_JOB_NAME}.zip Tests
     artifacts:
         when: on_success
@@ -38,7 +38,6 @@ variables:
     script:
         - cd Build
         - unzip Taktix_Tests*.zip
-        - rm Taktix_Tests*.zip
         - cd Tests
         - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
         - chmod +x Binaries/Taktix_Tests
@@ -47,7 +46,7 @@ variables:
         when: on_success
         expire_in: 2h
         paths:
-            - Build/Taktix_*.zip
+            - Build/Taktix-*.zip
 
 .deploy_template: &deploy_configuration
     stage: deploy
@@ -57,7 +56,7 @@ variables:
         when: on_success
         expire_in: 90 day
         paths:
-            - Build/Taktix_*.zip
+            - Build/Taktix-*.zip
 
 ### DEBIAN 9 (STRETCH) CONFIGURATION ###
 

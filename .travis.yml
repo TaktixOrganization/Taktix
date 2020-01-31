@@ -39,7 +39,7 @@ install:
     - chmod +x ci_osx.sh
     - sudo sh ci_osx.sh
     - cd Build
-    - zip -r Taktix_${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
+    - zip -r Taktix-${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
 
 script:
     - cd Tests
