@@ -19,22 +19,23 @@ IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
 
 IF "%platform%"=="Win32" (
     SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
-    SET PROGRAM_FILES=Program Files (x86)
+    SET PROGRAM_FILES="Program Files (x86)"
 )
 
 IF "%platform%"=="x64" (
     SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
-    SET PROGRAM_FILES=Program Files
+    SET PROGRAM_FILES="Program Files"
 )
 
 IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
-    SET PROGRAM_FILES=Program Files (x86)
+    SET PROGRAM_FILES="Program Files (x86)"
 )
 
 ECHO %image%
 ECHO %platform%
 ECHO %CMAKE_IMAGE_NAME%
 ECHO %CMAKE_GENERATOR_NAME%
+ECHO %PROGRAM_FILES%
 
 CD C:\projects\Taktix\Submodules
 
