@@ -28,6 +28,7 @@ IF "%platform%"=="x64" (
 )
 
 IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
+    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
     SET "PROGRAM_FILES=Program Files (x86)"
 )
 
