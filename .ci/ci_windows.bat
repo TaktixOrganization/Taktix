@@ -1,60 +1,75 @@
-@echo off
+@ECHO OFF
 
-setlocal
+SETLOCAL
 
-if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" set CMAKE_IMAGE_NAME=Visual Studio 14 2015
-if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" set CMAKE_IMAGE_NAME=Visual Studio 15 2017
+IF "%platform%"=="Win32" (
+    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
+    SET PROGRAM_FILES=Program Files (x86)
+)
 
-if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" set VS_DATE=vs2015
-if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" set VS_DATE=vs2017
+IF "%platform%"=="x64" (
+    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
+    SET PROGRAM_FILES=Program Files
+)
 
-if "%platform%"=="Win32" set CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
-if "%platform%"=="x64"   set CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
-if "%platform%"=="Win32" set PROGRAM_FILES=Program Files (x86)
-if "%platform%"=="x64" set PROGRAM_FILES=Program Files
+IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" (
+    SET CMAKE_IMAGE_NAME=Visual Studio 14 2015
+    SET VS_DATE=vs2015
+)
 
-echo %image%
-echo %platform%
-echo %CMAKE_IMAGE_NAME%
-echo %CMAKE_GENERATOR_NAME%
+IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" (
+    SET CMAKE_IMAGE_NAME=Visual Studio 15 2017
+    SET VS_DATE=vs2017
+)
 
-cd C:\projects\Taktix\Submodules
+IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
+    SET CMAKE_IMAGE_NAME=Visual Studio 16 2019
+    SET VS_DATE=vs2019
+    SET PROGRAM_FILES=Program Files (x86)
+)
 
-cd SFML
+ECHO %image%
+ECHO %platform%
+ECHO %CMAKE_IMAGE_NAME%
+ECHO %CMAKE_GENERATOR_NAME%
+
+CD C:\projects\Taktix\Submodules
+
+CD SFML
 git checkout 2.5.x
-md build
-cd build
+MD build
+CD build
 cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config "Release"
 cmake --build . --target INSTALL --config "Release"
-cd ../..
+CD ../..
 
-dir .
+DIR .
 
-cd TGUI
+CD TGUI
 git checkout 0.8
-md build
-cd build
+MD build
+CD build
 cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" ..
 cmake --build . --config "Release"
 cmake --build . --target INSTALL --config "Release"
-cd ../../..
+CD ../../..
 
-cd Build
+CD Build
 cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=Release -DSFML_ROOT="C:/%PROGRAM_FILES%/SFML/" -DTGUI_ROOT="C:/%PROGRAM_FILES%/TGUI/" ..
 cmake --build . --config "Release"
 
-xcopy ..\Submodules\SFML\build\lib\Release\*.dll Application\. /s /e /y
-xcopy ..\Submodules\TGUI\build\lib\Release\*.dll Application\. /s /e /y
+XCOPY ..\Submodules\SFML\build\lib\Release\*.dll Application\. /s /e /y
+XCOPY ..\Submodules\TGUI\build\lib\Release\*.dll Application\. /s /e /y
 
-dir Application\
-rd Application\CMakeFiles\ /s /q
-del Application\cmake_install.cmake
-del Application\Taktix.vcxproj
-del Application\Taktix.vcxproj.filters
-xcopy Application\Release\Taktix.exe Application\. /y
-rd Application\Release\ /s /q
-rd Application\Taktix.dir\ /s /q
-ren Application Taktix
+DIR Application\
+RD Application\CMakeFiles\ /s /q
+DEL Application\cmake_install.cmake
+DEL Application\Taktix.vcxproj
+DEL Application\Taktix.vcxproj.filters
+XCOPY Application\Release\Taktix.exe Application\. /y
+RD Application\Release\ /s /q
+RD Application\Taktix.dir\ /s /q
+REN Application Taktix
 
-move C:\projects\Taktix\Build\Taktix C:\projects\Taktix\.
+MOVE C:\projects\Taktix\Build\Taktix C:\projects\Taktix\.

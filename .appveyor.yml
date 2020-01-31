@@ -10,15 +10,10 @@ platform:
 image:
     - Visual Studio 2015
     - Visual Studio 2017
+    - Visual Studio 2019
 
 environment:
     MSVC_DEFAULT_OPTIONS: ON
-    FTP_HOSTNAME:
-        secure: lvnNWkzq6ap/9+XD34nAXA==
-    FTP_USERNAME:
-        secure: /RDpLEKEfBBCZZOX63LssA==
-    FTP_PASSWORD:
-        secure: j5hnloFsUso4YdC1OoMJDg==
 
 init:
     - cmd: cmake --version
