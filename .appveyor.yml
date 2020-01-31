@@ -55,4 +55,4 @@ deploy:
     password:
         secure: j5hnloFsUso4YdC1OoMJDg==
     folder: /Taktix_Releases/latest/windows/
-    artifact: Taktix:%VS_DATE%-%platform%
+    artifact: Taktix_%VS_DATE%-%platform%
