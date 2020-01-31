@@ -8,7 +8,7 @@ mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j2
-sudo make install
+make install
 
 cd ../../..
 
@@ -20,7 +20,7 @@ mkdir -p Build
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j2 tgui
-sudo make install
+make install
 
 cd ../../..
 
@@ -29,3 +29,7 @@ cd ../../..
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make all
+
+# Run tests
+
+./Tests/Taktix_Tests

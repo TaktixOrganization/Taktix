@@ -29,3 +29,7 @@ cd ../../..
 cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make all
+
+# Run tests
+
+./Tests/Taktix_Tests
