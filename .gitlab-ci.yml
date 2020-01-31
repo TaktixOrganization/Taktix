@@ -26,6 +26,7 @@ variables:
         - sh ci_linux.sh
         - cd Build
         - zip -r Taktix-${CI_JOB_NAME}.zip Taktix
+        - mv *.zip `basename *.zip | sed 's/build://g'`
         - zip -r Taktix_Tests-${CI_JOB_NAME}.zip Tests
     artifacts:
         when: on_success
@@ -46,7 +47,7 @@ variables:
         when: on_success
         expire_in: 2h
         paths:
-            - Build/Taktix-*.zip
+            - Build/Taktix_*.zip
 
 .deploy_template: &deploy_configuration
     stage: deploy
@@ -56,7 +57,7 @@ variables:
         when: on_success
         expire_in: 90 day
         paths:
-            - Build/Taktix-*.zip
+            - Build/Taktix_*.zip
 
 ### DEBIAN 9 (STRETCH) CONFIGURATION ###
 
