@@ -42,7 +42,7 @@ test_script:
 
 artifacts:
     - path: Taktix
-      name: Taktix:%VS_DATE%-%platform%
+      name: Taktix_%VS_DATE%-%platform%
       type: zip
 
 deploy:
