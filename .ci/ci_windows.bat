@@ -2,20 +2,6 @@
 
 SETLOCAL
 
-SET CMAKE_GENERATOR_NAME=
-SET PROGRAM_FILES=
-SET VS_DATE=
-
-IF "%platform%"=="Win32" (
-    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
-    SET PROGRAM_FILES=Program Files (x86)
-)
-
-IF "%platform%"=="x64" (
-    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
-    SET PROGRAM_FILES=Program Files
-)
-
 IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" (
     SET CMAKE_IMAGE_NAME=Visual Studio 14 2015
     SET VS_DATE=vs2015
@@ -30,6 +16,16 @@ IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
     SET CMAKE_IMAGE_NAME=Visual Studio 16 2019
     SET VS_DATE=vs2019
     SET PROGRAM_FILES=Program Files (x86)
+)
+
+IF "%platform%"=="Win32" (
+    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME%
+    SET PROGRAM_FILES=Program Files (x86)
+)
+
+IF "%platform%"=="x64" (
+    SET CMAKE_GENERATOR_NAME=%CMAKE_IMAGE_NAME% Win64
+    SET PROGRAM_FILES=Program Files
 )
 
 ECHO %image%
