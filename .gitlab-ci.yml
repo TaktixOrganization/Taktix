@@ -47,7 +47,7 @@ variables:
         when: on_success
         expire_in: 2h
         paths:
-            - Build/Taktix_*.zip
+            - Build/Taktix-*.zip
 
 .deploy_template: &deploy_configuration
     stage: deploy
@@ -57,7 +57,7 @@ variables:
         when: on_success
         expire_in: 90 day
         paths:
-            - Build/Taktix_*.zip
+            - Build/Taktix-*.zip
 
 ### DEBIAN 9 (STRETCH) CONFIGURATION ###
 
