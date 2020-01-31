@@ -26,6 +26,9 @@ install:
 
 before_build:
     - cmd: .ci\ci_windows.bat
+    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" SET VS_DATE=vs2015
+    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" SET VS_DATE=vs2017
+    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" SET VS_DATE=vs2019
 
 build:
     project: C:\projects\Taktix\Build\ALL_BUILD.vcxproj
