@@ -3,6 +3,8 @@
 # Repository : https://github.com/TaktixOrganization/Taktix
 # Builds     : https://ci.appveyor.com/project/Jeckhys/taktix
 
+shallow_clone: true
+
 platform:
   - Win32
   - x64
