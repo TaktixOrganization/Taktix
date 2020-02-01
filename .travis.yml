@@ -3,8 +3,8 @@
 # Repository : https://github.com/TaktixOrganization/Taktix
 # Builds     : https://travis-ci.com/TaktixOrganization/Taktix
 
-language:
-    cpp
+sudo: true
+language: cpp
 
 matrix:
     include:
