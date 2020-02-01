@@ -62,7 +62,8 @@ deploy:
 
 notifications:
   - provider: Webhook
-    url: $env:WEBHOOK_URL
+    url:
+      secure: 9L9tmDe4lW392OwcB2V4Yixx+kyXmMkKQau7aKiqrLztyk3rfkNR9VESkluM+3jsuh0q8farDyK6mOa0GtixwVOLoKi2ZrjjSNQdnzaSX+jKUflP3sJUm7LGBiRmDxXEBHRzTRmfKJE5sfer3xvtU506YKsWjYhs8pHwRplgyFNEqcmo4MY+RKZD6T6nMDZ3
     method: POST
     on_build_success: true
     on_build_failure: true
