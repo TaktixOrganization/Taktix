@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo apt-get install git
+
 # Compiling SFML from sources
 
 cd Submodules/SFML

@@ -26,10 +26,10 @@ case $1 in
     ;;
 esac
 
-AUTHOR_NAME="$(git log --pretty="%aN" -1 "$TRAVIS_COMMIT")"
-COMMITTER_NAME="$(git log --pretty="%cN" -1 "$TRAVIS_COMMIT")"
-COMMIT_SUBJECT="$(git log --pretty="%s" -1 "$TRAVIS_COMMIT")"
-COMMIT_MESSAGE="$(git log --pretty="%b" -1 "$TRAVIS_COMMIT")" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g'
+AUTHOR_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%aN")"
+COMMITTER_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%cN")"
+COMMIT_SUBJECT="$(git log -1 "$TRAVIS_COMMIT" --pretty="%s")"
+COMMIT_MESSAGE="$(git log -1 "$TRAVIS_COMMIT" --pretty="%b")" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g'
 
 if [ "$AUTHOR_NAME" == "$COMMITTER_NAME" ]; then
   CREDITS="$AUTHOR_NAME authored & committed"
