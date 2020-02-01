@@ -49,4 +49,4 @@ script:
   - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
 
 notifications:
-  webhooks: $WEBHOOK_URL
+  webhooks: ${WEBHOOK_URL}
