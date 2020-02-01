@@ -48,11 +48,5 @@ script:
     - ./Binaries/Taktix_Tests
     - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
 
-after_success:
-    - sudo wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-    - chmod +x send.sh
-    - ./send.sh success $WEBHOOK_URL
-after_failure:
-    - sudo wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-    - chmod +x send.sh
-    - ./send.sh failure $WEBHOOK_URL
+notifications:
+    webhooks: $WEBHOOK_URL
