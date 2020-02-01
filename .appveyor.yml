@@ -4,66 +4,66 @@
 # Builds     : https://ci.appveyor.com/project/Jeckhys/taktix
 
 platform:
-    - Win32
-    - x64
+  - Win32
+  - x64
 
 image:
-    - Visual Studio 2015
-    - Visual Studio 2017
-    - Visual Studio 2019
+  - Visual Studio 2015
+  - Visual Studio 2017
+  - Visual Studio 2019
 
 environment:
-    MSVC_DEFAULT_OPTIONS: ON
+  MSVC_DEFAULT_OPTIONS: ON
 
 init:
-    - cmd: cmake --version
-    - cmd: msbuild /version
+  - cmd: cmake --version
+  - cmd: msbuild /version
 
 clone_folder: C:\projects\Taktix
 
 install:
-    - cmd: git submodule update --init --recursive
+  - cmd: git submodule update --init --recursive
 
 before_build:
-    - cmd: .ci\ci_windows.bat
-    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" SET VS_DATE=vs2015
-    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" SET VS_DATE=vs2017
-    - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" SET VS_DATE=vs2019
+  - cmd: .ci\ci_windows.bat
+  - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" SET VS_DATE=vs2015
+  - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" SET VS_DATE=vs2017
+  - cmd: IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" SET VS_DATE=vs2019
 
 build:
-    project: C:\projects\Taktix\Build\ALL_BUILD.vcxproj
-    parallel: true
-    verbosity: normal
+  project: C:\projects\Taktix\Build\ALL_BUILD.vcxproj
+  parallel: true
+  verbosity: normal
 
 after_build:
-    - cmd: dir .
+  - cmd: dir .
 
 test: on
 test_script:
-    - cmd: cd C:\projects\Taktix\Build\Tests\Release\
-    - cmd: Taktix_Tests.exe
+  - cmd: cd C:\projects\Taktix\Build\Tests\Release\
+  - cmd: Taktix_Tests.exe
 
 artifacts:
-    - path: Taktix
-      name: Taktix-%VS_DATE%-%platform%
-      type: zip
+  - path: Taktix
+    name: Taktix-%VS_DATE%-%platform%
+    type: zip
 
 deploy:
-    provider: FTP
-    protocol: ftp
-    host:
-        secure: lvnNWkzq6ap/9+XD34nAXA==
-    username:
-        secure: /RDpLEKEfBBCZZOX63LssA==
-    password:
-        secure: j5hnloFsUso4YdC1OoMJDg==
-    folder: /Taktix_Releases/latest/windows/
-    artifact: Taktix-%VS_DATE%-%platform%
+  provider: FTP
+  protocol: ftp
+  host:
+    secure: lvnNWkzq6ap/9+XD34nAXA==
+  username:
+    secure: /RDpLEKEfBBCZZOX63LssA==
+  password:
+    secure: j5hnloFsUso4YdC1OoMJDg==
+  folder: /Taktix_Releases/latest/windows/
+  artifact: Taktix-%VS_DATE%-%platform%
 
 notifications:
-- provider: Webhook
-  url: $env:WEBHOOK_URL
-  method: POST
-  on_build_success: true
-  on_build_failure: true
-  on_build_status_changed: true
+  - provider: Webhook
+    url: $env:WEBHOOK_URL
+    method: POST
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true

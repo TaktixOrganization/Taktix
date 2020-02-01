@@ -3,11 +3,11 @@
 
 class Taktix
 {
-    public:
-        Taktix() = default;
-        ~Taktix() = default;
+public:
+    Taktix() = default;
+    ~Taktix() = default;
 
-        void run();
+    void run();
 };
 
-#endif // HEADER_TAKTIX_HPP
+#endif  // HEADER_TAKTIX_HPP

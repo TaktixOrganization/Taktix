@@ -7,46 +7,46 @@ sudo: true
 language: cpp
 
 matrix:
-    include:
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode11
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode10
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode9
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode8
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode7.3
+  include:
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode11
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode10
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode9
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode8
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode7.3
 
 install:
-    - cp .ci/ci_osx.sh .
-    - chmod +x ci_osx.sh
-    - sudo sh ci_osx.sh
-    - cd Build
-    - zip -r Taktix-${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
+  - cp .ci/ci_osx.sh .
+  - chmod +x ci_osx.sh
+  - sudo sh ci_osx.sh
+  - cd Build
+  - zip -r Taktix-${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
 
 script:
-    - cd Tests
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
-    - chmod +x Binaries/Taktix_Tests
-    - ./Binaries/Taktix_Tests
-    - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
+  - cd Tests
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
+  - chmod +x Binaries/Taktix_Tests
+  - ./Binaries/Taktix_Tests
+  - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
 
 notifications:
-    webhooks: $WEBHOOK_URL
+  webhooks: $WEBHOOK_URL

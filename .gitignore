@@ -4,3 +4,4 @@ Database/*
 Build/*
 !Build/*.sh
 .DS_Store
+.vscode
