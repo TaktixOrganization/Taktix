@@ -60,11 +60,7 @@ deploy:
   folder: /Taktix_Releases/latest/windows/
   artifact: Taktix-%VS_DATE%-%platform%
 
-notifications:
-  - provider: Webhook
-    url:
-      secure: 9L9tmDe4lW392OwcB2V4Yixx+kyXmMkKQau7aKiqrLztyk3rfkNR9VESkluM+3jsuh0q8farDyK6mOa0GtixwVOLoKi2ZrjjSNQdnzaSX+jKUflP3sJUm7LGBiRmDxXEBHRzTRmfKJE5sfer3xvtU506YKsWjYhs8pHwRplgyFNEqcmo4MY+RKZD6T6nMDZ3
-    method: POST
-    on_build_success: true
-    on_build_failure: true
-    on_build_status_changed: true
+on_success:
+  - ps: ./.ci/ci_windows_discord.ps1 success $env:WEBHOOK_URL
+on_failure:
+  - ps: ./.ci/ci_windows_discord.ps1 failure $env:WEBHOOK_URL

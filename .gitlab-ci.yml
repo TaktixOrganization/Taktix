@@ -472,15 +472,13 @@ deploy:fedora-28:
 success_notification:
   stage: notification
   script:
-    - wget https://raw.githubusercontent.com/DiscordHooks/gitlab-ci-discord-webhook/master/send.sh
-    - chmod +x send.sh
-    - ./send.sh success $WEBHOOK_URL
+    - chmod +x .ci/ci_linux_discord.sh
+    - ./.ci/ci_linux_discord.sh success $WEBHOOK_URL
   when: on_success
 
 failure_notification:
   stage: notification
   script:
-    - wget https://raw.githubusercontent.com/DiscordHooks/gitlab-ci-discord-webhook/master/send.sh
-    - chmod +x send.sh
-    - ./send.sh failure $WEBHOOK_URL
+    - chmod +x .ci/ci_linux_discord.sh
+    - ./.ci/ci_linux_discord.sh failure $WEBHOOK_URL
   when: on_failure
