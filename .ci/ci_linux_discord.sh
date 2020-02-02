@@ -26,7 +26,7 @@ esac
 AUTHOR_NAME="$(git log -1 "$CI_COMMIT_SHA" --pretty="%aN")"
 COMMITTER_NAME="$(git log -1 "$CI_COMMIT_SHA" --pretty="%cN")"
 COMMIT_SUBJECT="$(git log -1 "$CI_COMMIT_SHA" --pretty="%s")"
-COMMIT_MESSAGE="$(git log -1 "$CI_COMMIT_SHA" --pretty="%b")" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g'
+COMMIT_MESSAGE="$(git log -1 "$TRAVIS_COMMIT" --pretty="%b" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g')"
 
 if [ "$AUTHOR_NAME" == "$COMMITTER_NAME" ]; then
   CREDITS="$AUTHOR_NAME authored & committed"
@@ -34,7 +34,7 @@ else
   CREDITS="$AUTHOR_NAME authored & $COMMITTER_NAME committed"
 fi
 
-if [ -z $CI_MERGE_REQUEST_ID ]; then
+if [ -z "$CI_MERGE_REQUEST_ID" ]; then
   URL=""
 else
   URL="$CI_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_ID"
