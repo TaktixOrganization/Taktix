@@ -50,7 +50,7 @@ cp ../Submodules/TGUI/Build/lib/* Tests/Submodules/.
 # Cleaning deployement files
 
 rm Makefile
-rm *.cmake
+rm ./*.cmake
 rm -rf CMakeFiles
 rm CMake*
 
