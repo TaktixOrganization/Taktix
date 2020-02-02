@@ -35,7 +35,6 @@ matrix:
       osx_image: xcode7.3
 
 install:
-  - rvm use 2.3 --install --binary
   - brew update
   - brew install git
   - cp .ci/ci_osx.sh .
