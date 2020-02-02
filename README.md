@@ -33,6 +33,7 @@ Dependency | Version | Informations
 ---------- | ------- | ------------
 [SFML](https://github.com/SFML/SFML) | [2.5.x](https://github.com/SFML/SFML/tree/2.5.x) | [List of SFML dependencies](https://www.sfml-dev.org/tutorials/2.5/compile-with-cmake.php#installing-dependencies)
 [TGUI](https://github.com/texus/TGUI) | [0.8](https://github.com/texus/TGUI/tree/0.8) | TGUI only depends on SFML
+[Catch2](https://github.com/catchorg/Catch2) | 2.11.1 |
 [CMake](https://cmake.org/) | 2.8.11+ |
 [Doxygen](http://www.doxygen.nl/) | 1.8.13+ | (Optional) Used to build documentation
 
