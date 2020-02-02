@@ -3,6 +3,7 @@
 PROJECT( Taktix )
 
 # Configure CMake
+
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8.11 )
 
 SET( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/CMake" )
@@ -38,48 +39,36 @@ FILE( GLOB_RECURSE TAKTIX_HEADERS "Includes/*.hpp" )
 FILE( GLOB_RECURSE TAKTIX_INLINES "Includes/*.inl" )
 
 FILE(
-        GLOB_RECURSE
-        TAKTIX_SOURCES
-        ${TAKTIX_SOURCES}
-        ${TAKTIX_HEADERS}
-        ${TAKTIX_INLINES}
+    GLOB_RECURSE
+    TAKTIX_SOURCES
+    ${TAKTIX_SOURCES}
+    ${TAKTIX_HEADERS}
+    ${TAKTIX_INLINES}
 )
 
 # Configuring SFML
 
-FIND_PACKAGE( SFML 2 REQUIRED system window graphics network audio )
+FIND_PACKAGE( SFML 2.5 REQUIRED system window graphics network audio )
 
 if(NOT SFML_FOUND)
     message(FATAL_ERROR "Could not find SFML")
 endif()
 
+INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
+
 # Configuring TGUI
 
-FIND_PACKAGE( TGUI 0.7 REQUIRED )
+FIND_PACKAGE( TGUI 0.8 REQUIRED )
 
 if(NOT TGUI_FOUND)
     message(FATAL_ERROR "Could not find TGUI")
 endif()
 
-# Configuring Catch2
-
-INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries/Catch2/single_include" )
-
-# Configuring ECS (by redxdev)
-
-INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries" )
-
-# Configuring spdlog
-
-INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Libraries/spdlog/include" )
-
-# Configuring TGUI
-
 INCLUDE_DIRECTORIES( ${TGUI_INCLUDE_DIR} )
 
-# Configuring SFML
+# Configuring Catch2
 
-INCLUDE_DIRECTORIES( ${SFML_INCLUDE_DIR} )
+INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/Submodules/Catch2/single_include" )
 
 # Configuring Doxygen
 # Add Documentation target
@@ -92,11 +81,11 @@ IF( DOXYGEN_FOUND )
     CONFIGURE_FILE( ${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY )
 
     ADD_CUSTOM_TARGET(
-            Documentation ALL
-            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "Generating documentation using Doxygen"
-            VERBATIM
+        Documentation ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating documentation using Doxygen"
+        VERBATIM
     )
 ELSE()
     MESSAGE( STATUS "${PROJECT_NAME} : Doxygen need to be installed to generate documentation" )

@@ -1,5 +1,0 @@
-# CodeDocs.xyz - Configuration file
-
-DOXYFILE = Documentation/Doxyfile.in
-
-# PROJECT_LOGO = Documentation/logo.png

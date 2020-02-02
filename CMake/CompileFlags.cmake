@@ -1,6 +1,6 @@
 # Common compilation flags (depending on build configurations)
 
-SET( UNIX_DEFAULT_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -pthread -std=c++11")
+SET( UNIX_DEFAULT_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -std=c++11")
 SET( UNIX_DEFAULT_CXX_FLAGS_DEBUG "-g3 -ggdb")
 SET( UNIX_DEFAULT_CXX_FLAGS_RELEASE "-DNDEBUG -O3")
 

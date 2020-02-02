@@ -1,71 +1,58 @@
 ### INFORMATIONS ###
 
 # Repository : https://github.com/TaktixOrganization/Taktix
-# Builds : https://travis-ci.com/TaktixOrganization/Taktix
+# Builds     : https://travis-ci.com/TaktixOrganization/Taktix
 
-language:
-    cpp
+sudo: true
+language: cpp
 
 matrix:
-    include:
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode10
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode9
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode8
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode7.3
-        - env:
-            - BUILD_TYPE=Release
-          compiler: clang
-          os: osx
-          osx_image: xcode6.4
+  include:
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode11
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode10
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode9
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode8
+    - env:
+        - BUILD_TYPE=Release
+      compiler: clang
+      os: osx
+      osx_image: xcode7.3
 
 install:
-    - ls
-    - cd Libraries # Taktix/Libraries
-    - cd SFML && mkdir build && cd build # Taktix/Libraries/SFML/build
-    - cmake .. -DCMAKE_BUILD_TYPE=Release
-    - make -j2
-    - sudo make install
-    - cd ../.. # Taktix/Libraries
-    - ls
-    - cd TGUI # Taktix/Libraries/TGUI
-    - git checkout 0.7
-    - mkdir build && cd build # Taktix/Libraries/TGUI/build
-    - cmake .. -DCMAKE_BUILD_TYPE=Release
-    - make -j2
-    - sudo make install
-    - cd ../../.. # Taktix
-    - ls
-    - cd Build # Taktix/Build
-    - cmake .. -DCMAKE_BUILD_TYPE=Release
-    - make all
-    - mkdir -p Application/Libraries/
-    - cp ../Libraries/SFML/build/lib/* Application/Libraries/.
-    - cp ../Libraries/TGUI/build/lib/* Application/Libraries/.
-    - rm -rf Application/CMakeFiles/
-    - rm Application/Makefile
-    - rm Application/cmake_install.cmake
-    - mkdir -p Application/Binaries/
-    - mv Application/Taktix Application/Binaries/.
-    - cp run.sh Application/.
-    - mv Application Taktix
-    - zip -r Taktix:${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
+  - cp .ci/ci_osx.sh .
+  - chmod +x ci_osx.sh
+  - sh ci_osx.sh
+  - cd Build
+  - zip -r Taktix-${TRAVIS_OS_NAME}-${TRAVIS_OSX_IMAGE}.zip Taktix
 
 script:
-    - ./Tests/Taktix_Tests
-    - curl -T Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/www/latest/osx/
+  - cd Tests
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/Submodules"
+  - chmod +x Binaries/Taktix_Tests
+  - ./Binaries/Taktix_Tests
+  - curl -T ../Taktix*.zip ftp://${FTP_USERNAME}:${FTP_PASSWORD}@${FTP_HOSTNAME}/Taktix_Releases/latest/osx/
+
+after_success:
+  - cd ../..
+  - chmod +x .ci/ci_osx_discord.sh
+  - ./.ci/ci_osx_discord.sh success $WEBHOOK_URL
+after_failure:
+  - cd ../..
+  - chmod +x .ci/ci_osx_discord.sh
+  - ./.ci/ci_osx_discord.sh failure $WEBHOOK_URL

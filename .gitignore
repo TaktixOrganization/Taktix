@@ -1,6 +1,5 @@
 .idea/*
-Artifacts/*
 Build/*
-!Build/run.sh
-!Build/run.bat
+!Build/*.sh
 .DS_Store
+.vscode

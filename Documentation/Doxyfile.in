@@ -4,9 +4,9 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = TaktixEngine
+PROJECT_NAME           = Taktix
 PROJECT_NUMBER         =
-PROJECT_BRIEF          = "TE : TaktixEngine"
+PROJECT_BRIEF          = "Just another RPG."
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/Documentation
 CREATE_SUBDIRS         = NO
