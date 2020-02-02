@@ -50,9 +50,9 @@ script:
 
 after_success:
   - cd ../..
-  - sudo chmod +x .ci/ci_osx_discord.sh
-  - sudo ./.ci/ci_osx_discord.sh success $WEBHOOK_URL
+  - chmod +x .ci/ci_osx_discord.sh
+  - ./.ci/ci_osx_discord.sh success $WEBHOOK_URL
 after_failure:
   - cd ../..
-  - sudo chmod +x .ci/ci_osx_discord.sh
-  - sudo ./.ci/ci_osx_discord.sh failure $WEBHOOK_URL
+  - chmod +x .ci/ci_osx_discord.sh
+  - ./.ci/ci_osx_discord.sh failure $WEBHOOK_URL
