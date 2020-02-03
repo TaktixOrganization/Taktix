@@ -4,7 +4,7 @@
 #include <Core/State.hpp>
 #include <TGUI/TGUI.hpp>
 
-class SecondState : public State
+class SecondState final : public State
 {
 public:
     explicit SecondState(StateManager& stateManager);

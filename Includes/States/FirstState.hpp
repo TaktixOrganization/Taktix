@@ -4,7 +4,7 @@
 #include <Core/State.hpp>
 #include <TGUI/TGUI.hpp>
 
-class FirstState : public State
+class FirstState final : public State
 {
 public:
     explicit FirstState(StateManager& stateManager);
