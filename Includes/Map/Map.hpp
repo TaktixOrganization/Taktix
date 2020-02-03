@@ -10,7 +10,7 @@
 class Map : public sf::Drawable, public sf::Transformable
 {
 public:
-    Map(const std::string& name);
+    explicit Map(const std::string& name);
     ~Map() = default;
 
 private:
