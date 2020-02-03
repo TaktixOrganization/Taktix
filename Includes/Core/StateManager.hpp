@@ -14,7 +14,7 @@ public:
 
     void pop();
 
-    template <typename T>
+    template <typename T, typename std::enable_if<std::is_base_of<State, T>::value>::type*>
     void push();
 
     void handleEvent();

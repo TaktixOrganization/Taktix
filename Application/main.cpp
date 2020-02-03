@@ -4,8 +4,8 @@
 
 int main(int argc, char* argv[])
 {
-    Taktix game;
-    game.run<FirstState>();
+    Taktix* game = Taktix::instance();
+    game->run<FirstState>();
 
     return EXIT_SUCCESS;
 }

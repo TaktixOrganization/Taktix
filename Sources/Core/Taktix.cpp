@@ -9,3 +9,10 @@ Taktix::Taktix()
     m_renderWindow.setFramerateLimit(60);
     m_renderWindow.setVerticalSyncEnabled(false);
 }
+
+Taktix* Taktix::instance()
+{
+    static Taktix instance;
+
+    return &instance;
+}
