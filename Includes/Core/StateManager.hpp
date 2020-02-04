@@ -24,6 +24,7 @@ public:
     bool empty();
 
     State& currentState();
+    sf::RenderWindow& getRenderWindow();
 
 private:
     sf::RenderWindow& m_renderWindow;

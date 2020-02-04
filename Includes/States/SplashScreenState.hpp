@@ -1,23 +1,22 @@
-#ifndef HEADER_SECONDSTATE_HPP
-#define HEADER_SECONDSTATE_HPP
+#ifndef HEADER_SPLASHSCREENSTATE_HPP
+#define HEADER_SPLASHSCREENSTATE_HPP
 
 #include <Core/State.hpp>
 #include <TGUI/TGUI.hpp>
 
-class SecondState final : public State
+class SplashScreenState final : public State
 {
 public:
-    explicit SecondState(StateManager& stateManager);
+    explicit SplashScreenState(StateManager& stateManager);
 
     void handleEvent(const sf::Event& event) override;
     void handleUpdate() override;
     void handleDisplay(sf::RenderWindow& renderWindow) override;
 
-private:
-    void popAndGoBack();
+    void initializeGui();
 
 private:
     tgui::Gui m_gui;
 };
 
-#endif  // HEADER_SECONDSTATE_HPP
+#endif  // HEADER_SPLASHSCREENSTATE_HPP

@@ -18,8 +18,6 @@ void StateManager::handleEvent()
     sf::Event event;
 
     while (m_renderWindow.pollEvent(event)) {
-        this->currentState().handleEvent(event);
-
         switch (event.type) {
             case sf::Event::Closed:
                 m_renderWindow.close();
@@ -27,6 +25,8 @@ void StateManager::handleEvent()
             default:
                 break;
         }
+
+        this->currentState().handleEvent(event);
     }
 }
 
@@ -52,4 +52,9 @@ bool StateManager::empty()
 State& StateManager::currentState()
 {
     return *(m_states.top());
+}
+
+sf::RenderWindow& StateManager::getRenderWindow()
+{
+    return m_renderWindow;
 }

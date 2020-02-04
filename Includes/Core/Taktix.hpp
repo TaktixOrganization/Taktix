@@ -6,6 +6,13 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <TGUI/Gui.hpp>
 
+struct WindowSettings
+{
+    int _width;
+    int _height;
+    sf::Uint32 _style;
+};
+
 class Taktix
 {
 public:
@@ -17,9 +24,11 @@ public:
     static Taktix* instance();
 
 private:
-    Taktix();
+    Taktix(sf::VideoMode videoMode, const std::string& title, sf::Uint32 style);
     Taktix(const Taktix&) = delete;
     Taktix& operator=(const Taktix&) = delete;
+
+    static WindowSettings loadSettings(const std::string& filename);
 
 private:
     tgui::Gui m_gui;
