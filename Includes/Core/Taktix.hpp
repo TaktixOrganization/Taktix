@@ -3,9 +3,6 @@
 
 #include <Core/GraphicsSettings.hpp>
 #include <Core/StateManager.hpp>
-#include <Map/Map.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <TGUI/Gui.hpp>
 
 class Taktix
 {
@@ -23,12 +20,8 @@ private:
     Taktix& operator=(const Taktix&) = delete;
 
 private:
-    tgui::Gui m_gui;
-
-    sf::RenderWindow m_renderWindow;
-
-    Map m_currentMap;
     StateManager m_stateManager;
+    GraphicsSettings m_settings;
 };
 
 #include <Core/Taktix.inl>

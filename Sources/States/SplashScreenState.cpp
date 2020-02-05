@@ -2,14 +2,26 @@
 #include <States/SplashScreenState.hpp>
 #include <iostream>
 
-SplashScreenState::SplashScreenState(StateManager& stateManager)
-    : State(stateManager)
+SplashScreenState::SplashScreenState(StateManager& stateManager, GraphicsSettings& settings)
+    : State(stateManager, settings)
 {
     this->initializeGui();
 }
 
-void SplashScreenState::handleEvent(const sf::Event& event)
+void SplashScreenState::handleEvent()
 {
+    sf::Event event;
+
+    while (m_renderWindow.pollEvent(event)) {
+        switch (event.type) {
+            case sf::Event::Closed:
+                m_renderWindow.close();
+                break;
+            default:
+                break;
+        }
+    }
+
     m_gui.handleEvent(event);
 }
 
@@ -33,17 +45,20 @@ void SplashScreenState::handleUpdate()
     }
 }
 
-void SplashScreenState::handleDisplay(sf::RenderWindow& renderWindow)
+void SplashScreenState::handleDisplay()
 {
-    m_gui.setTarget(renderWindow);
+    m_renderWindow.clear();
     m_gui.draw();
+    m_renderWindow.display();
 }
 
 void SplashScreenState::initializeGui()
 {
+    m_gui.setTarget(m_renderWindow);
+
     m_gui.add(tgui::Picture::create("Assets/Textures/Parallaxs/splashscreen.jpg"), "background");
 
-    sf::Vector2u windowSize = m_stateManager.getRenderWindow().getSize();
+    sf::Vector2u windowSize = m_renderWindow.getSize();
     sf::Vector2f pictureSize = m_gui.get<tgui::Picture>("background")->getSize();
 
     m_gui.get<tgui::Picture>("background")->setPosition(-std::abs(pictureSize.x - windowSize.x) / 2.0f, -std::abs(pictureSize.y - windowSize.y));

@@ -7,11 +7,11 @@
 class SplashScreenState final : public State
 {
 public:
-    explicit SplashScreenState(StateManager& stateManager);
+    explicit SplashScreenState(StateManager& stateManager, GraphicsSettings& settings);
 
-    void handleEvent(const sf::Event& event) override;
+    void handleEvent() override;
     void handleUpdate() override;
-    void handleDisplay(sf::RenderWindow& renderWindow) override;
+    void handleDisplay() override;
 
     void initializeGui();
 

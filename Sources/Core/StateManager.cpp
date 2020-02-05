@@ -1,10 +1,7 @@
 #include <Core/StateManager.hpp>
 #include <SFML/Window/Event.hpp>
 
-StateManager::StateManager(sf::RenderWindow& renderWindow)
-    : m_renderWindow(renderWindow)
-{
-}
+StateManager::StateManager() {}
 
 void StateManager::pop()
 {
@@ -15,19 +12,7 @@ void StateManager::pop()
 
 void StateManager::handleEvent()
 {
-    sf::Event event;
-
-    while (m_renderWindow.pollEvent(event)) {
-        switch (event.type) {
-            case sf::Event::Closed:
-                m_renderWindow.close();
-                break;
-            default:
-                break;
-        }
-
-        this->currentState().handleEvent(event);
-    }
+    this->currentState().handleEvent();
 }
 
 void StateManager::handleUpdate()
@@ -37,11 +22,7 @@ void StateManager::handleUpdate()
 
 void StateManager::handleDisplay()
 {
-    m_renderWindow.clear();
-
-    this->currentState().handleDisplay(m_renderWindow);
-
-    m_renderWindow.display();
+    this->currentState().handleDisplay();
 }
 
 bool StateManager::empty()
@@ -52,9 +33,4 @@ bool StateManager::empty()
 State& StateManager::currentState()
 {
     return *(m_states.top());
-}
-
-sf::RenderWindow& StateManager::getRenderWindow()
-{
-    return m_renderWindow;
 }
