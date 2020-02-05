@@ -16,7 +16,6 @@ public:
     void initializeGui();
 
 private:
-    tgui::Gui m_gui;
 };
 
 #endif  // HEADER_SPLASHSCREENSTATE_HPP

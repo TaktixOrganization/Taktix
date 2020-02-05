@@ -54,7 +54,8 @@ void SplashScreenState::handleDisplay()
 
 void SplashScreenState::initializeGui()
 {
-    m_gui.setTarget(m_renderWindow);
+    tgui::Theme theme{"Themes/default.txt"};
+    tgui::Theme::setDefault(&theme);
 
     m_gui.add(tgui::Picture::create("Assets/Textures/Parallaxs/splashscreen.jpg"), "background");
 
@@ -67,10 +68,13 @@ void SplashScreenState::initializeGui()
     m_gui.add(tgui::Button::create("Load"), "btnLoad");
     m_gui.add(tgui::Button::create("Exit"), "btnExit");
 
-    sf::Vector2f buttonSize(150.0f, 75.0f);
+    sf::Vector2f buttonSize(200.0f, 100.0f);
     m_gui.get<tgui::Button>("btnNew")->setSize(buttonSize);
     m_gui.get<tgui::Button>("btnLoad")->setSize(buttonSize);
     m_gui.get<tgui::Button>("btnExit")->setSize(buttonSize);
+    m_gui.get<tgui::Button>("btnNew")->setTextSize(24);
+    m_gui.get<tgui::Button>("btnLoad")->setTextSize(24);
+    m_gui.get<tgui::Button>("btnExit")->setTextSize(24);
 
     m_gui.get<tgui::Button>("btnLoad")->setPosition((windowSize.x - buttonSize.x) / 2.0f, 500.0f);
     sf::Vector2f buttonPosition = m_gui.get<tgui::Button>("btnLoad")->getPosition();
@@ -80,4 +84,6 @@ void SplashScreenState::initializeGui()
     m_gui.get<tgui::Button>("btnNew")->setVisible(false);
     m_gui.get<tgui::Button>("btnLoad")->setVisible(false);
     m_gui.get<tgui::Button>("btnExit")->setVisible(false);
+
+    m_gui.get<tgui::Button>("btnExit")->connect("pressed", [&]() { m_renderWindow.close(); });
 }

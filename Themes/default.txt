@@ -1,0 +1,7 @@
+Button {
+    Font            = "../Assets/Fonts/default.ttf";
+    TextColor       = #34536A;
+    TextColorHover  = #54738A;
+    Texture         = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 0, 0);
+    TextureHover    = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 4, 4);
+}
