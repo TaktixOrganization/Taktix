@@ -1,17 +1,11 @@
 #ifndef HEADER_TAKTIX_HPP
 #define HEADER_TAKTIX_HPP
 
+#include <Core/GraphicsSettings.hpp>
 #include <Core/StateManager.hpp>
 #include <Map/Map.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <TGUI/Gui.hpp>
-
-struct WindowSettings
-{
-    int _width;
-    int _height;
-    sf::Uint32 _style;
-};
 
 class Taktix
 {
@@ -24,11 +18,9 @@ public:
     static Taktix* instance();
 
 private:
-    Taktix(sf::VideoMode videoMode, const std::string& title, sf::Uint32 style);
+    Taktix(GraphicsSettings settings);
     Taktix(const Taktix&) = delete;
     Taktix& operator=(const Taktix&) = delete;
-
-    static WindowSettings loadSettings(const std::string& filename);
 
 private:
     tgui::Gui m_gui;
