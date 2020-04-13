@@ -3,3 +3,5 @@ Build/*
 !Build/*.sh
 .DS_Store
 .vscode
+build_osx.sh
+build_linux.sh
