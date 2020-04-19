@@ -14,7 +14,7 @@ public:
 
     void pop();
 
-    template <typename T, typename std::enable_if<std::is_base_of<State, T>::value>::type*>
+    template <typename T>
     void push(GraphicsSettings& settings);
 
     void handleEvent();

@@ -1,7 +1,7 @@
 #ifndef HEADER_TAKTIX_INL
 #define HEADER_TAKTIX_INL
 
-template <typename T, typename std::enable_if<std::is_base_of<State, T>::value>::type* = nullptr>
+template <typename T>
 void Taktix::run()
 {
     m_stateManager.push<T>(m_settings);
