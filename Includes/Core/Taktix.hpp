@@ -3,6 +3,7 @@
 
 #include <Core/GraphicsSettings.hpp>
 #include <Core/StateManager.hpp>
+#include <type_traits>
 
 class Taktix
 {
