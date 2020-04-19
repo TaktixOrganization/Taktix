@@ -4,6 +4,7 @@
 #include <Core/State.hpp>
 #include <memory>
 #include <stack>
+#include <type_traits>
 
 class StateManager
 {
