@@ -1,5 +1,6 @@
 #include <Core/StateManager.hpp>
 #include <States/SplashScreenState.hpp>
+#include <cmath>
 #include <iostream>
 
 SplashScreenState::SplashScreenState(StateManager& stateManager, GraphicsSettings& settings)
