@@ -1,7 +1,19 @@
 Button {
-    Font            = "../Assets/Fonts/default.ttf";
-    TextColor       = #34536A;
-    TextColorHover  = #54738A;
-    Texture         = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 0, 0);
-    TextureHover    = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 4, 4);
+    Font           = "../Assets/Fonts/default.ttf";
+    TextColor      = #34536A;
+    TextColorHover = #54738A;
+    Texture        = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 0, 0);
+    TextureHover   = "../Assets/Textures/Gui/gui.png" Part(384, 450, 19, 26) Middle(10, 10, 4, 4);
+}
+
+ChildWindow {
+	BorderBelowTitleBar    = 0;
+	Borders                = (0, 0, 0, 0);
+	DistanceToSide         = 3;
+	Font                   = "../Assets/Fonts/default.ttf";
+	TextureBackground      = "../Assets/Textures/Gui/gui.png" Part(200, 150, 100, 50);
+	TextureTitleBar        = "../Assets/Textures/Gui/gui.png" Part(200, 100, 100, 30);
+	TitleBarColor          = #34536A;
+	TitleColor             = #34536A;
+	TransparentTexture     = false;
 }

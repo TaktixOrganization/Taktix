@@ -16,6 +16,8 @@ public:
     void initializeGui();
 
 private:
+    void _openNew();
+    void _openLoad();
 };
 
 #endif  // HEADER_SPLASHSCREENSTATE_HPP

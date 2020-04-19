@@ -85,5 +85,23 @@ void SplashScreenState::initializeGui()
     m_gui.get<tgui::Button>("btnLoad")->setVisible(false);
     m_gui.get<tgui::Button>("btnExit")->setVisible(false);
 
+    m_gui.get<tgui::Button>("btnNew")->connect("pressed", [&]() { _openNew(); });
+    m_gui.get<tgui::Button>("btnLoad")->connect("pressed", [&]() { _openLoad(); });
     m_gui.get<tgui::Button>("btnExit")->connect("pressed", [&]() { m_renderWindow.close(); });
+
+    m_gui.add(tgui::ChildWindow::create("New game", tgui::ChildWindow::TitleButton::None), "windowNew");
+    sf::Vector2f windowNewSize(800.0f, 480.0f);
+    m_gui.get<tgui::ChildWindow>("windowNew")->setSize(windowNewSize);
+    m_gui.get<tgui::ChildWindow>("windowNew")->setTitleTextSize(32);
+    m_gui.get<tgui::ChildWindow>("windowNew")->getRenderer()->setTitleBarHeight(windowNewSize.y * 0.3f);
+    m_gui.get<tgui::ChildWindow>("windowNew")->setPositionLocked(true);
+    m_gui.get<tgui::ChildWindow>("windowNew")->setPosition((windowSize.x - windowNewSize.x) / 2.0f, (windowSize.y - windowNewSize.y * 1.3f) / 2.0f);
+    m_gui.get<tgui::ChildWindow>("windowNew")->setVisible(false);
 }
+
+void SplashScreenState::_openNew()
+{
+    m_gui.get<tgui::ChildWindow>("windowNew")->setVisible(true);
+}
+
+void SplashScreenState::_openLoad() {}
